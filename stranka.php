@@ -3,7 +3,8 @@ header('Content-Type: application/json; charset=utf-8');
 $upload = "/home/xkukhelna/public_html/files/";
 $target_file = basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$name=$_POST['name'];
+$imageFileType = strtolower(pathinfo($target_file . basename($_FILES["fileToUpload"]["name"],PATHINFO_EXTENSION)));
     switch ($_FILES['upfile']['error']){
         case 0:
             break;
@@ -31,8 +32,9 @@ if(isset($_POST["submit"])) {
 
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
+    $newtarget_file = $upload . "(".$uploadOk.")" . $name.".".$imageFileType;
+    rename($target_file, $newtarget_file);
+    $uploadOk += 1;
 }
 
 
@@ -47,10 +49,3 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-echo '<section class="main">';
-    echo '<div class="border-r-20 blocks" >';
-        echo '<div class="marg_20">Meno </div>';
-        echo '<div class="marg_20"> Velkost </div>';
-        echo '<div class="marg_20"> Datum </div>';
-    echo    '</div>';
-echo '</section>';
