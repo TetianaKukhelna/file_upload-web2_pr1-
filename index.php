@@ -9,16 +9,20 @@
 <?php
     $dir = "home/xkukhelna/public_html/files/";
     $adresar = scandir($dir);
-    foreach($adresar as $polozka){
-        var_dump(is_dir("files/" . $polozka));
-        if(is_dir("files/".$polozka)){
-            $link = "?path=".$polozka;
-            echo "<a href='".$link."'>{$polozka}</a>";
-            echo "<br>";
+    if($adresar) {
+        foreach($adresar as $polozka){
+            var_dump(is_dir("files/" . $polozka));
+            if(is_dir("files/".$polozka)){
+                $link = "?path=".$polozka;
+                echo "<a href='".$link."'>{$polozka}</a>";
+                echo '<br>';
+            }
+            else
+                echo $polozka . "<br>";
         }
-        else
-            echo $polozka . "<br>";
-    }
+    } else
+        echo "Nuchaj bebru" ;
+
 ?>
 
 <!doctype html>
