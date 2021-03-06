@@ -7,7 +7,7 @@
 ?>
 
 <?php
-    $dir = "home/xkukhelna/public_html/files/";
+    $dir = "/home/xkukhelna/public_html/files/";
     $adresar = scandir($dir);
     if($adresar) {
         foreach($adresar as $polozka){
