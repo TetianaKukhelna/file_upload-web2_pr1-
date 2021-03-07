@@ -1,7 +1,7 @@
 const tlacidlo = document.querySelector('#submit');
 tlacidlo.addEventListener('click',() =>{
     let forma = new FormData(document.querySelector('#data'));
-    let cesta = '/files/stranka.php';
+    let cesta = '/files/upload.php';
     let method = new Request(cesta,{
         method:'POST',
         body: forma
